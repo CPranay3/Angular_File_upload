@@ -1,0 +1,44 @@
+<div class="container">
+  <form #myForm="ngForm">
+    <br>
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label">CountryName</label>
+      <input type="email" class="form-control" name="name" aria-describedby="emailHelp" [(ngModel)]="userObj.name">
+     
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label">CountryID</label>
+      <input type="email" class="form-control" name="id" aria-describedby="emailHelp" [(ngModel)]="userObj.id">
+      
+    </div>
+
+
+    <br>
+    <button type="button" class="btn btn-primary" (click)="add(myForm.value)" *ngIf="!isEdit">Submit</button >
+    <button type="button" class="btn btn-info"  *ngIf="isEdit">Submit</button >
+  </form>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">CountryName</th>
+        <th scope="col">CountryID</th>
+        
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- tocheck -->
+      <tr *ngFor= "let country of allUser" >
+        <td>{{country.name}}</td>
+        <td>{{country.id}}</td>
+        <!-- <td>{{country.description}}</td>   -->
+
+      <td><button (click)="editCountry(country)" class = "btn btn-warning">Edit</button></td>
+      <td><button (click)="deleteCountry(country)" class = "btn btn-danger">Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
